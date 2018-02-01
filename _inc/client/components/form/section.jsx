@@ -1,18 +1,18 @@
 /** External Dependencies **/
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' );
+const PropTypes = require( 'prop-types' );
+const React = require( 'react' );
 
 module.exports = class extends React.Component {
-    static displayName = 'Section';
+	static displayName = 'Section';
 
-    static propTypes = {
+	static propTypes = {
 		title: PropTypes.any,
 		id: PropTypes.string
 	};
 
-    render() {
+	render() {
 		return (
-			<div id={this.props.id}>
+			<div id={ this.props.id }>
 				{this.props.title ?
 					(
 						<div>

@@ -1,14 +1,14 @@
 /** External Dependencies **/
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	Formsy = require( 'formsy-react' );
 
-var createReactClass = require('create-react-class');
+const createReactClass = require( 'create-react-class' );
 
-module.exports = createReactClass({
+module.exports = createReactClass( {
 	displayName: 'HiddenInput',
 
-	mixins: [Formsy.Mixin],
+	mixins: [ Formsy.Mixin ],
 
 	propTypes: {
 		name: PropTypes.string.isRequired
@@ -16,7 +16,7 @@ module.exports = createReactClass({
 
 	render: function() {
 		return (
-			<input type="hidden" value={this.getValue()}/>
+			<input type="hidden" value={ this.getValue() } />
 		);
 	}
-});
+} );

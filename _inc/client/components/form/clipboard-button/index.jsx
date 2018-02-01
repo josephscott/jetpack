@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-var PropTypes = require( 'prop-types' );
-var ReactDom = require( 'react-dom' ),
+const PropTypes = require( 'prop-types' );
+let ReactDom = require( 'react-dom' ),
 	React = require( 'react' ),
 	Clipboard = require( 'clipboard' ),
 	omit = require( 'lodash/omit' ),
@@ -15,21 +15,21 @@ var ReactDom = require( 'react-dom' ),
 import Button from 'components/button';
 
 module.exports = class extends React.Component {
-    static displayName = 'ClipboardButton';
+	static displayName = 'ClipboardButton';
 
-    static propTypes = {
+	static propTypes = {
 		className: PropTypes.string,
 		text: PropTypes.string,
 		prompt: PropTypes.string,
 		onCopy: PropTypes.func
 	};
 
-    static defaultProps = {
-        onCopy: noop
-    };
+	static defaultProps = {
+		onCopy: noop
+	};
 
-    componentDidMount() {
-		var button = ReactDom.findDOMNode( this.refs.button );
+	componentDidMount() {
+		const button = ReactDom.findDOMNode( this.refs.button );
 		this.clipboard = new Clipboard( button, {
 			text: () => this.props.text
 		} );
@@ -37,17 +37,17 @@ module.exports = class extends React.Component {
 		this.clipboard.on( 'error', this.displayPrompt );
 	}
 
-    componentWillUnmount() {
+	componentWillUnmount() {
 		this.clipboard.destroy();
 		delete this.clipboard;
 	}
 
-    displayPrompt = () => {
+	displayPrompt = () => {
 		window.prompt( this.props.prompt, this.props.text );
 	};
 
-    render() {
-		var classes = classNames( 'dops-clipboard-button', this.props.className );
+	render() {
+		const classes = classNames( 'dops-clipboard-button', this.props.className );
 		return (
 			<Button
 				ref="button"

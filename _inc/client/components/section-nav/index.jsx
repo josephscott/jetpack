@@ -3,17 +3,17 @@
 /**
  * External Dependencies
  */
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	isEqual = require( 'lodash/isEqual' ),
 	classNames = require( 'classnames' );
 
-var createReactClass = require('create-react-class');
+const createReactClass = require( 'create-react-class' );
 
 /**
  * Internal Dependencies
  */
-var NavTabs = require( './tabs' ),
+let NavTabs = require( './tabs' ),
 	NavItem = require( './item' ),
 	Search = require( 'components/search' );
 
@@ -22,10 +22,10 @@ require( './style.scss' );
 /**
  * Main
  */
-var SectionNav = createReactClass({
-    displayName: 'SectionNav',
+const SectionNav = createReactClass( {
+	displayName: 'SectionNav',
 
-    propTypes: {
+	propTypes: {
 		children: PropTypes.node,
 		selectedText: PropTypes.node,
 		selectedCount: PropTypes.number,
@@ -33,23 +33,23 @@ var SectionNav = createReactClass({
 		onMobileNavPanelOpen: PropTypes.func
 	},
 
-    getInitialState: function() {
+	getInitialState: function() {
 		return {
 			mobileOpen: false
 		};
 	},
 
-    getDefaultProps: function() {
+	getDefaultProps: function() {
 		return {
 			onMobileNavPanelOpen: () => {}
 		};
 	},
 
-    componentWillMount: function() {
+	componentWillMount: function() {
 		this.checkForSiblingControls( this.props.children );
 	},
 
-    componentWillReceiveProps: function( nextProps ) {
+	componentWillReceiveProps: function( nextProps ) {
 		if ( isEqual( this.props, nextProps ) ) {
 			return;
 		}
@@ -61,8 +61,8 @@ var SectionNav = createReactClass({
 		}
 	},
 
-    render: function() {
-		var children = this.getChildren(),
+	render: function() {
+		let children = this.getChildren(),
 			className;
 
 		if ( ! children ) {
@@ -104,9 +104,9 @@ var SectionNav = createReactClass({
 		);
 	},
 
-    getChildren: function() {
+	getChildren: function() {
 		return React.Children.map( this.props.children, function( child ) {
-			var extraProps = {
+			const extraProps = {
 				hasSiblingControls: this.hasSiblingControls,
 				closeSectionNavMobilePanel: this.closeMobilePanel
 			};
@@ -141,7 +141,7 @@ var SectionNav = createReactClass({
 		}.bind( this ) );
 	},
 
-    closeMobilePanel: function() {
+	closeMobilePanel: function() {
 		if ( window.innerWidth < 480 && this.state.mobileOpen ) {
 			this.setState( {
 				mobileOpen: false
@@ -149,8 +149,8 @@ var SectionNav = createReactClass({
 		}
 	},
 
-    toggleMobileOpenState: function() {
-		var mobileOpen = ! this.state.mobileOpen;
+	toggleMobileOpenState: function() {
+		const mobileOpen = ! this.state.mobileOpen;
 
 		this.setState( {
 			mobileOpen: mobileOpen
@@ -161,14 +161,14 @@ var SectionNav = createReactClass({
 		}
 	},
 
-    generateOnSearch: function( existingOnSearch ) {
+	generateOnSearch: function( existingOnSearch ) {
 		return function() {
 			existingOnSearch.apply( this, arguments );
 			this.closeMobilePanel();
 		}.bind( this );
 	},
 
-    checkForSiblingControls: function( children ) {
+	checkForSiblingControls: function( children ) {
 		this.hasSiblingControls = false;
 
 		React.Children.forEach( children, function( child, index ) {
@@ -178,6 +178,6 @@ var SectionNav = createReactClass({
 			}
 		}.bind( this ) );
 	},
-});
+} );
 
 module.exports = SectionNav;

@@ -1,17 +1,17 @@
 /** External Dependencies **/
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' );
+const PropTypes = require( 'prop-types' );
+const React = require( 'react' );
 
 module.exports = class extends React.Component {
-    static displayName = 'ActionBar';
+	static displayName = 'ActionBar';
 
-    static propTypes = {
+	static propTypes = {
 		style: PropTypes.object
 	};
 
-    render() {
+	render() {
 		return (
-			<div className="dops-form-actionbar" style={this.props.style}>
+			<div className="dops-form-actionbar" style={ this.props.style }>
 				{this.props.children}
 			</div>
 		);

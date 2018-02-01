@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	PropTypes = require( 'prop-types' ),
 	noop = require( 'lodash/noop' ),
 	throttle = require( 'lodash/throttle' );
@@ -9,15 +9,15 @@ var React = require( 'react' ),
 /**
  * Internal dependencies
  */
-var BarContainer = require( './bar-container' ),
+let BarContainer = require( './bar-container' ),
 	touchDetect = require( 'lib/touch-detect' );
 
 require( './style.scss' );
 
 module.exports = class extends React.Component {
-    static displayName = 'ModuleChart';
+	static displayName = 'ModuleChart';
 
-    static propTypes = {
+	static propTypes = {
 		loading: PropTypes.bool,
 		data: PropTypes.array,
 		minTouchBarWidth: PropTypes.number,
@@ -25,37 +25,37 @@ module.exports = class extends React.Component {
 		barClick: PropTypes.func
 	};
 
-    static defaultProps = {
-        minTouchBarWidth: 42,
-        minBarWidth: 15,
-        barClick: noop
-    };
+	static defaultProps = {
+		minTouchBarWidth: 42,
+		minBarWidth: 15,
+		barClick: noop
+	};
 
-    state = {
-        maxBars: 100, // arbitrarily high number. This will be calculated by resize method
-        width: 650
-    };
+	state = {
+		maxBars: 100, // arbitrarily high number. This will be calculated by resize method
+		width: 650
+	};
 
     // Add listener for window resize
-    componentDidMount() {
+	componentDidMount() {
 		this.resize = throttle( this.resize, 400 );
 		window.addEventListener( 'resize', this.resize );
 		this.resize();
 	}
 
     // Remove listener
-    componentWillUnmount() {
+	componentWillUnmount() {
 		window.removeEventListener( 'resize', this.resize );
 	}
 
-    componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps( nextProps ) {
 		if ( this.props.loading && ! nextProps.loading ) {
 			this.resize();
 		}
 	}
 
-    resize = () => {
-		var node = this.refs.chart,
+	resize = () => {
+		let node = this.refs.chart,
 			width = node.clientWidth - 82,
 			maxBars;
 
@@ -72,8 +72,8 @@ module.exports = class extends React.Component {
 		} );
 	};
 
-    getYAxisMax = (values) => {
-		var max = Math.max.apply( null, values ),
+	getYAxisMax = ( values ) => {
+		let max = Math.max.apply( null, values ),
 			operand = Math.pow( 10, ( max.toString().length - 1 ) ),
 			rounded = ( Math.ceil( ( max + 1 ) / operand ) * operand );
 
@@ -84,25 +84,25 @@ module.exports = class extends React.Component {
 		return rounded;
 	};
 
-    getData = () => {
-		var data = this.props.data;
+	getData = () => {
+		let data = this.props.data;
 
 		data = data.slice( 0 - this.state.maxBars );
 
 		return data;
 	};
 
-    getValues = () => {
-		var data = this.getData();
+	getValues = () => {
+		let data = this.getData();
 
-		data = data.map( function ( item ) {
+		data = data.map( function( item ) {
 			return item.value;
 		}, this );
 
 		return data;
 	};
 
-    isEmptyChart = (values) => {
+	isEmptyChart = ( values ) => {
 		values = values.filter( function( value ) {
 			return value > 0;
 		}, this );
@@ -110,8 +110,8 @@ module.exports = class extends React.Component {
 		return values.length === 0;
 	};
 
-    render() {
-		var values = this.getValues(),
+	render() {
+		let values = this.getValues(),
 			yAxisMax = this.getYAxisMax( values ),
 			data = this.getData(),
 			emptyChart;
@@ -130,7 +130,7 @@ module.exports = class extends React.Component {
 		}
 
 		return (
-			<div ref="chart" className='dops-chart'>
+			<div ref="chart" className="dops-chart">
 				<div className="dops-chart__y-axis-markers">
 					<div className="dops-chart__y-axis-marker is-hundred"></div>
 					<div className="dops-chart__y-axis-marker is-fifty"></div>

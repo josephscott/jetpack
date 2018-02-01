@@ -1,19 +1,19 @@
 /**
  * External dependencies
  */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	noop = require( 'lodash/noop' ),
 	classnames = require( 'classnames' );
 
 class MenuItem extends React.Component {
-    static defaultProps = {
-        isVisible: false,
-        className: '',
-        focusOnHover: true
-    };
+	static defaultProps = {
+		isVisible: false,
+		className: '',
+		focusOnHover: true
+	};
 
-    render() {
-		var onMouseOver = this.props.focusOnHover ? this._onMouseOver : null;
+	render() {
+		const onMouseOver = this.props.focusOnHover ? this._onMouseOver : null;
 		return (
 			<button className={ classnames( 'dops-popover__menu-item', this.props.className ) }
 					role="menuitem"
@@ -27,7 +27,7 @@ class MenuItem extends React.Component {
 		);
 	}
 
-    _onMouseOver = (event) => {
+	_onMouseOver = ( event ) => {
 		event.target.focus();
 	};
 }

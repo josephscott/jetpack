@@ -1,23 +1,23 @@
 /**
  * External dependencies
  */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	PureRenderMixin = require( 'react-pure-render/mixin' );
 
-var createReactClass = require('create-react-class');
+const createReactClass = require( 'create-react-class' );
 
 /**
  * Internal dependencies
  */
-var Search = require( 'components/search' ),
+let Search = require( 'components/search' ),
 	SearchCard = require( 'components/search-card' );
 
 /**
  * Globals
  */
-var noop = () => {};
+const noop = () => {};
 
-var SearchDemo = createReactClass({
+const SearchDemo = createReactClass( {
 	displayName: 'Search',
 
 	mixins: [ PureRenderMixin ],
@@ -40,6 +40,6 @@ var SearchDemo = createReactClass({
 			</div>
 		);
 	}
-});
+} );
 
 module.exports = SearchDemo;

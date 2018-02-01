@@ -1,20 +1,20 @@
 /**
  * External dependencies
  */
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' );
+const PropTypes = require( 'prop-types' );
+const React = require( 'react' );
 
 module.exports = class extends React.Component {
-    static displayName = 'ModuleChartLabel';
+	static displayName = 'ModuleChartLabel';
 
-    static propTypes = {
+	static propTypes = {
 		width: PropTypes.number.isRequired,
 		x: PropTypes.number.isRequired,
 		label: PropTypes.string.isRequired
 	};
 
-    render() {
-		var labelStyle,
+	render() {
+		let labelStyle,
 			dir = 'left';
 
 		labelStyle = {

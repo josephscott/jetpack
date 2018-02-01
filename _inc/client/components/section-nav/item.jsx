@@ -3,26 +3,26 @@
 /**
  * External Dependencies
  */
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	PureRenderMixin = require( 'react-pure-render/mixin' ),
 	classNames = require( 'classnames' );
 
-var createReactClass = require('create-react-class');
+const createReactClass = require( 'create-react-class' );
 
 /**
  * Internal Dependencies
  */
-var Count = require( 'components/count' );
+const Count = require( 'components/count' );
 
 /**
  * Main
  */
-var NavItem = createReactClass({
-    displayName: 'NavItem',
-    mixins: [ PureRenderMixin ],
+const NavItem = createReactClass( {
+	displayName: 'NavItem',
+	mixins: [ PureRenderMixin ],
 
-    propTypes: {
+	propTypes: {
 		itemType: PropTypes.string,
 		path: PropTypes.string,
 		selected: PropTypes.bool,
@@ -33,8 +33,8 @@ var NavItem = createReactClass({
 		count: PropTypes.number
 	},
 
-    render: function() {
-		var itemClassPrefix = this.props.itemType
+	render: function() {
+		let itemClassPrefix = this.props.itemType
 			? this.props.itemType
 			: 'tab',
 
@@ -78,6 +78,6 @@ var NavItem = createReactClass({
 			</li>
 		);
 	},
-});
+} );
 
 module.exports = NavItem;

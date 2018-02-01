@@ -3,20 +3,20 @@
 /**
 * External dependencies
 */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	PureRenderMixin = require( 'react-pure-render/mixin' );
 
-var createReactClass = require('create-react-class');
+const createReactClass = require( 'create-react-class' );
 
 /**
  * Internal dependencies
  */
-var ButtonGroup = require( 'components/button-group' ),
+let ButtonGroup = require( 'components/button-group' ),
 	Button = require( 'components/button' ),
 	Card = require( 'components/card' ),
 	Gridicon = require( 'components/gridicon' );
 
-var Buttons = createReactClass({
+const Buttons = createReactClass( {
 	displayName: 'ButtonGroup',
 
 	mixins: [ PureRenderMixin ],
@@ -69,6 +69,6 @@ var Buttons = createReactClass({
 			</div>
 		);
 	},
-});
+} );
 
 module.exports = Buttons;

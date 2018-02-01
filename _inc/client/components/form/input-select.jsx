@@ -1,23 +1,23 @@
 /* eslint-disable jsx-a11y/no-onchange */
 
 /** External Dependencies **/
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	Formsy = require( 'formsy-react' );
 
-var createReactClass = require('create-react-class');
+const createReactClass = require( 'create-react-class' );
 
 /** Internal Dependencies **/
-var Label = require( './label' ),
+let Label = require( './label' ),
 	getUniqueId = require( './counter' ),
 	FormInputValidation = require( '../form-input-validation' ),
 	requiredFieldErrorFormatter = require( './required-error-label' );
 
-module.exports = createReactClass({
+module.exports = createReactClass( {
 	displayName: 'SelectInput',
 
-	mixins: [Formsy.Mixin],
+	mixins: [ Formsy.Mixin ],
 
 	propTypes: {
 		name: PropTypes.string.isRequired,
@@ -49,11 +49,11 @@ module.exports = createReactClass({
 	},
 
 	render: function() {
-		var errorMessage, labelClass;
+		let errorMessage, labelClass;
 
-		if ( !this.isPristine() ) {
+		if ( ! this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
-			if ( !errorMessage ) {
+			if ( ! errorMessage ) {
 				errorMessage = this.showRequired() ? requiredFieldErrorFormatter( this.props.label || this.props.placeholder || '' ) : null;
 			}
 		}
@@ -64,7 +64,7 @@ module.exports = createReactClass({
 			labelClass = 'floating floating--floated floating--floated-active';
 		}
 
-		let className = classNames( {
+		const className = classNames( {
 			'dops-form-select': true,
 			'dops-field': true,
 			'dops-form-error': errorMessage,
@@ -73,14 +73,14 @@ module.exports = createReactClass({
 		}, this.props.className );
 
 		return (
-			<Label className={className} inline={this.props.inline} labelClassName={labelClass} label={this.props.label} labelSuffix={this.props.labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required} style={this.props.style} description={ this.props.description }>
+			<Label className={ className } inline={ this.props.inline } labelClassName={ labelClass } label={ this.props.label } labelSuffix={ this.props.labelSuffix } htmlFor={ this.state.uniqueId } required={ this.props.required } style={ this.props.style } description={ this.props.description }>
 				<div className="dops-form-select">
-					<select ref="select" id={this.state.uniqueId} value={this.getValue()} onChange={this.handleChange}>
+					<select ref="select" id={ this.state.uniqueId } value={ this.getValue() } onChange={ this.handleChange }>
 						{this.props.children}
 					</select>
 				</div>
-				{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
+				{errorMessage && ( <FormInputValidation text={ errorMessage } isError={ true } /> )}
 			</Label>
 		);
 	}
-});
+} );

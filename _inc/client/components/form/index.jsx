@@ -1,11 +1,11 @@
 /** External Dependencies **/
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	isArray = require( 'lodash/isArray' ),
 	Formsy = require( 'formsy-react' );
 
 /** Internal Dependencies **/
-var ActionBar = require( './action-bar' ),
+let ActionBar = require( './action-bar' ),
 	Section = require( './section' ),
 	Row = require( './row' ),
 	Label = require( './label' ),
@@ -22,7 +22,7 @@ require( './style.scss' );
 
 // very thin wrapper for Formsy.Form
 class Form extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		style: PropTypes.object,
 		onValidSubmit: PropTypes.func,
 		onInvalidSubmit: PropTypes.func,
@@ -31,25 +31,25 @@ class Form extends React.Component {
 		validationErrors: PropTypes.object
 	};
 
-    state = {};
+	state = {};
 
-    isValid = () => {
+	isValid = () => {
 		return this.refs.form.state.isValid;
 	};
 
-    getCurrentValues = () => {
+	getCurrentValues = () => {
 		return this.refs.form.getCurrentValues();
 	};
 
-    submit = () => {
+	submit = () => {
 		this.refs.form.submit();
 	};
 
-    render() {
-		var { style, ...other } = this.props;
+	render() {
+		let { style, ...other } = this.props;
 		return (
-			<div className="dops-form" style={style}>
-				<Formsy.Form ref="form" {...other}>
+			<div className="dops-form" style={ style }>
+				<Formsy.Form ref="form" { ...other }>
 					{this.props.children}
 				</Formsy.Form>
 			</div>
@@ -63,21 +63,21 @@ class Form extends React.Component {
  * @author ShirtlessKirk. Copyright ( c ) 2012.
  * @license WTFPL ( http://www.wtfpl.net/txt/copying )
  */
-let luhnChk = ( function( arr ) {
+const luhnChk = ( function( arr ) {
 	return function( ccNum ) {
-		var len = ccNum.length,
+		let len = ccNum.length,
 			bit = 1,
 			sum = 0,
 			val;
 
 		while ( len ) {
 			val = parseInt( ccNum.charAt( --len ), 10 );
-			sum += ( bit ^= 1 ) ? arr[val] : val;
+			sum += ( bit ^= 1 ) ? arr[ val ] : val;
 		}
 
 		return sum && sum % 10 === 0;
 	};
-}( [0, 2, 4, 6, 8, 1, 3, 5, 7, 9] ) );
+}( [ 0, 2, 4, 6, 8, 1, 3, 5, 7, 9 ] ) );
 
 // To find out more about validators, see:
 // https://github.com/christianalfoni/formsy-react/blob/master/API.md#validators

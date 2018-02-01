@@ -1,19 +1,19 @@
 /** External Dependencies **/
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	Formsy = require( 'formsy-react' );
 
-var createReactClass = require('create-react-class');
+const createReactClass = require( 'create-react-class' );
 
 /** Internal Dependencies **/
-var Label = require( './label' ),
+let Label = require( './label' ),
 	getUniqueId = require( './counter' ),
 	FormInputValidation = require( '../form-input-validation' ),
 	requiredFieldErrorFormatter = require( './required-error-label' );
 
 class Radios extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		name: PropTypes.string,
 		choices: PropTypes.array,
 		selected: PropTypes.any,
@@ -21,22 +21,22 @@ class Radios extends React.Component {
 		changeValue: PropTypes.func,
 	};
 
-    static defaultProps = {
-        choices: [],
-    };
+	static defaultProps = {
+		choices: [],
+	};
 
-    onChange = (event) => {
+	onChange = ( event ) => {
 		this.props.changeValue( event );
 	};
 
-    render() {
-		var uniqueId = this.props.uniqueId,
+	render() {
+		let uniqueId = this.props.uniqueId,
 			choices = this.props.choices.map( function( choice, i ) {
-				var checked = this.props.selected === choice.value;
+				const checked = this.props.selected === choice.value;
 				return (
-					<div className='dops-form-checkbox' key={ i }>
+					<div className="dops-form-checkbox" key={ i }>
 						<Label inline label={ choice.label } htmlFor={ uniqueId + i }>
-							<input type='radio' id={ uniqueId + i } value={ choice.value } name={ this.props.name } checked={ checked } onChange={ this.onChange } />
+							<input type="radio" id={ uniqueId + i } value={ choice.value } name={ this.props.name } checked={ checked } onChange={ this.onChange } />
 						</Label>
 					</div>
 				);
@@ -50,7 +50,7 @@ class Radios extends React.Component {
 	}
 }
 
-module.exports = createReactClass({
+module.exports = createReactClass( {
 	displayName: 'RadioInput',
 
 	mixins: [ Formsy.Mixin ],
@@ -86,7 +86,7 @@ module.exports = createReactClass({
 	},
 
 	render: function() {
-		var errorMessage;
+		let errorMessage;
 
 		if ( ! this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
@@ -95,7 +95,7 @@ module.exports = createReactClass({
 			}
 		}
 
-		let className = classNames( {
+		const className = classNames( {
 			'dops-field': true,
 			'dops-form-radio': true,
 			'dops-form-error': errorMessage,
@@ -110,4 +110,4 @@ module.exports = createReactClass({
 			</div>
 		);
 	}
-});
+} );

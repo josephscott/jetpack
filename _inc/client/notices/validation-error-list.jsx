@@ -1,18 +1,18 @@
 /**
  * External dependencies
  */
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	map = require( 'lodash/map' );
 
 module.exports = class extends React.Component {
-    static displayName = 'ValidationErrorList';
+	static displayName = 'ValidationErrorList';
 
-    static propTypes = {
+	static propTypes = {
 		messages: PropTypes.array.isRequired
 	};
 
-    render() {
+	render() {
 		return (
 			<div>
 				<p>

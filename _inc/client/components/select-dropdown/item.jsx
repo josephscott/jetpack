@@ -3,17 +3,17 @@
 /**
  * External Dependencies
  */
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	classNames = require( 'classnames' );
 
 /**
  * Internal dependencies
  */
-var Count = require( 'components/count' );
+const Count = require( 'components/count' );
 
 class SelectDropdownItem extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		children: PropTypes.string.isRequired,
 		path: PropTypes.string,
 		selected: PropTypes.bool,
@@ -21,12 +21,12 @@ class SelectDropdownItem extends React.Component {
 		count: PropTypes.number
 	};
 
-    static defaultProps = {
-        selected: false
-    };
+	static defaultProps = {
+		selected: false
+	};
 
-    render() {
-		var optionClassName = classNames( this.props.className, {
+	render() {
+		const optionClassName = classNames( this.props.className, {
 			'dops-select-dropdown__item': true,
 			'is-selected': this.props.selected,
 			'is-disabled': this.props.disabled

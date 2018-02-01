@@ -1,49 +1,49 @@
 /**
  * External dependencies
  */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	PropTypes = require( 'prop-types' ),
 	throttle = require( 'lodash/throttle' );
 
 /**
  * Internal dependencies
  */
-var Label = require( './label' );
+const Label = require( './label' );
 
 module.exports = class extends React.Component {
-    static displayName = 'ModuleChartXAxis';
+	static displayName = 'ModuleChartXAxis';
 
-    static propTypes = {
+	static propTypes = {
 		labelWidth: PropTypes.number.isRequired,
 		data: PropTypes.array.isRequired
 	};
 
-    state = {
-        divisor: 1,
-        spacing: this.props.labelWidth
-    };
+	state = {
+		divisor: 1,
+		spacing: this.props.labelWidth
+	};
 
     // Add listener for window resize
-    componentDidMount() {
+	componentDidMount() {
 		this.resizeThrottled = throttle( this.resize, 400 );
 		window.addEventListener( 'resize', this.resizeThrottled );
 		this.resize();
 	}
 
     // Remove listener
-    componentWillUnmount() {
-		if( this.resizeThrottled.cancel ) {
+	componentWillUnmount() {
+		if ( this.resizeThrottled.cancel ) {
 			this.resizeThrottled.cancel();
 		}
 		window.removeEventListener( 'resize', this.resizeThrottled );
 	}
 
-    componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps( nextProps ) {
 		this.resize( nextProps );
 	}
 
-    resize = (nextProps) => {
-		var node,
+	resize = ( nextProps ) => {
+		let node,
 			props = this.props,
 			width,
 			dataCount,
@@ -77,12 +77,12 @@ module.exports = class extends React.Component {
 		} );
 	};
 
-    render() {
-		var labels,
+	render() {
+		let labels,
 			data = this.props.data;
 
-		labels = data.map( function ( item, index ) {
-			var x = ( index * this.state.spacing ) + ( ( this.state.spacing - this.props.labelWidth ) / 2 ),
+		labels = data.map( function( item, index ) {
+			let x = ( index * this.state.spacing ) + ( ( this.state.spacing - this.props.labelWidth ) / 2 ),
 				rightIndex = data.length - index - 1,
 				label;
 

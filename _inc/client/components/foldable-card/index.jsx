@@ -2,14 +2,14 @@
  * External Dependencies
  */
 const PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+let React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	noop = require( 'lodash/noop' );
 
 /**
  * Internal Dependencies
  */
-var Card = require( 'components/card' ),
+let Card = require( 'components/card' ),
 	CompactCard = require( 'components/card/compact' ),
 	Gridicon = require( 'components/gridicon' ),
 	onKeyDownCallback = require( 'utils/onkeydown-callback' );
@@ -17,7 +17,7 @@ var Card = require( 'components/card' ),
 require( './style.scss' );
 
 class FoldableCard extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		actionButton: PropTypes.element,
 		actionButtonExpanded: PropTypes.element,
 		cardKey: PropTypes.string,
@@ -34,21 +34,21 @@ class FoldableCard extends React.Component {
 		clickableHeaderText: PropTypes.bool
 	};
 
-    static defaultProps = {
-        onOpen: noop,
-        onClose: noop,
-        cardKey: '',
-        icon: 'chevron-down',
-        isExpanded: false,
-        clickableHeader: false,
-        clickableHeaderText: false
-    };
+	static defaultProps = {
+		onOpen: noop,
+		onClose: noop,
+		cardKey: '',
+		icon: 'chevron-down',
+		isExpanded: false,
+		clickableHeader: false,
+		clickableHeaderText: false
+	};
 
-    state = {
-        expanded: this.props.expanded
-    };
+	state = {
+		expanded: this.props.expanded
+	};
 
-    onClick = () => {
+	onClick = () => {
 		if ( this.props.children ) {
 			this.setState( { expanded: ! this.state.expanded } );
 		}
@@ -64,21 +64,21 @@ class FoldableCard extends React.Component {
 		}
 	};
 
-    getClickAction = () => {
+	getClickAction = () => {
 		if ( this.props.disabled ) {
 			return;
 		}
 		return this.onClick;
 	};
 
-    getActionButton = () => {
+	getActionButton = () => {
 		if ( this.state.expanded ) {
 			return this.props.actionButtonExpanded || this.props.actionButton;
 		}
 		return this.props.actionButton;
 	};
 
-    renderActionButton = () => {
+	renderActionButton = () => {
 		const clickAction = ! this.props.clickableHeader ? this.getClickAction() : null;
 		if ( this.props.actionButton ) {
 			return (
@@ -88,7 +88,7 @@ class FoldableCard extends React.Component {
 			);
 		}
 		if ( this.props.children ) {
-			let iconSize = 24;
+			const iconSize = 24;
 			return (
 				<button type="button" disabled={ this.props.disabled } className="dops-foldable-card__action dops-foldable-card__expand" onClick={ clickAction }>
 					<span className="screen-reader-text">More</span>
@@ -98,7 +98,7 @@ class FoldableCard extends React.Component {
 		}
 	};
 
-    renderContent = () => {
+	renderContent = () => {
 		return (
 			<div className="dops-foldable-card__content">
 				{ this.props.children }
@@ -106,8 +106,8 @@ class FoldableCard extends React.Component {
 		);
 	};
 
-    renderHeader = () => {
-		var summary = this.props.summary ? <span className="dops-foldable-card__summary">{ this.props.summary } </span> : null,
+	renderHeader = () => {
+		let summary = this.props.summary ? <span className="dops-foldable-card__summary">{ this.props.summary } </span> : null,
 			expandedSummary = this.props.expandedSummary ? <span className="dops-foldable-card__summary_expanded">{ this.props.expandedSummary } </span> : null,
 			header = this.props.header ? <div className="dops-foldable-card__header-text">{ this.props.header }</div> : null,
 			subheader = this.props.subheader ? <div className="dops-foldable-card__subheader">{ this.props.subheader }</div> : null,
@@ -141,8 +141,8 @@ class FoldableCard extends React.Component {
 		);
 	};
 
-    render() {
-		var Container = this.props.compact ? CompactCard : Card,
+	render() {
+		let Container = this.props.compact ? CompactCard : Card,
 			itemSiteClasses = classNames(
 				'dops-foldable-card',
 				this.props.className,

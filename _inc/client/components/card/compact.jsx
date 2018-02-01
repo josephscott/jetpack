@@ -1,19 +1,19 @@
 /**
  * External dependencies
  */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	assign = require( 'lodash/assign' ),
 	classnames = require( 'classnames' );
 
 /**
  * Internal dependencies
  */
-var Card = require( 'components/card' );
+const Card = require( 'components/card' );
 
 module.exports = class extends React.Component {
-    static displayName = 'CompactCard';
+	static displayName = 'CompactCard';
 
-    render() {
+	render() {
 		const props = assign( {}, this.props, { className: classnames( this.props.className, 'is-compact' ) } );
 
 		return (

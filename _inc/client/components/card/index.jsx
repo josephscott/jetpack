@@ -1,5 +1,5 @@
 const PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+let React = require( 'react' ),
 	Gridicon = require( '../gridicon' ),
 	classnames = require( 'classnames' );
 
@@ -9,19 +9,19 @@ import omit from 'lodash/omit';
 require( './style.scss' );
 
 class CardSection extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		title: PropTypes.any,
 		vertical: PropTypes.any,
 		style: PropTypes.object,
 		className: PropTypes.string,
-		device: PropTypes.oneOf( ['desktop', 'tablet', 'phone'] )
+		device: PropTypes.oneOf( [ 'desktop', 'tablet', 'phone' ] )
 	};
 
-    static defaultProps = { vertical: null };
+	static defaultProps = { vertical: null };
 
-    render() {
+	render() {
 		return (
-			<div className={classnames( 'dops-card-section', this.props.className )} style={this.props.style}>
+			<div className={ classnames( 'dops-card-section', this.props.className ) } style={ this.props.style }>
 				{this.props.title ?
 					this._renderWithTitle() :
 					this.props.children
@@ -30,12 +30,12 @@ class CardSection extends React.Component {
 		);
 	}
 
-    _renderWithTitle = () => {
-		var orientation = this.props.vertical ? 'vertical' : 'horizontal';
-		var wrapperClassName = 'dops-card-section-orient-' + orientation;
+	_renderWithTitle = () => {
+		const orientation = this.props.vertical ? 'vertical' : 'horizontal';
+		const wrapperClassName = 'dops-card-section-orient-' + orientation;
 
 		return (
-			<div className={wrapperClassName}>
+			<div className={ wrapperClassName }>
 				<h4 ref="label" className="dops-card-section-label">
 					{this.props.title}
 				</h4>
@@ -48,7 +48,7 @@ class CardSection extends React.Component {
 }
 
 class CardFooter extends React.Component {
-    render() {
+	render() {
 		return (
 			<div className="dops-card-footer">
 				{this.props.children}
@@ -58,7 +58,7 @@ class CardFooter extends React.Component {
 }
 
 class Card extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		meta: PropTypes.any,
 		icon: PropTypes.string,
 		iconLabel: PropTypes.any,
@@ -73,13 +73,13 @@ class Card extends React.Component {
 		children: PropTypes.node
 	};
 
-    static defaultProps = {
-        iconColor: '#787878',
-        className: '',
-        tagName: 'div'
-    };
+	static defaultProps = {
+		iconColor: '#787878',
+		className: '',
+		tagName: 'div'
+	};
 
-    render() {
+	render() {
 		const className = classnames( 'dops-card', this.props.className, {
 			'is-card-link': !! this.props.href,
 			'is-compact': this.props.compact
@@ -118,10 +118,10 @@ class Card extends React.Component {
 		);
 	}
 
-    _renderIcon = () => {
+	_renderIcon = () => {
 		return (
-			<span className="dops-card-icon" style={{ color: this.props.iconColor }}>
-				{ this.props.icon && <Gridicon icon={ this.props.icon } style={{ backgroundColor: this.props.iconColor }}/>}
+			<span className="dops-card-icon" style={ { color: this.props.iconColor } }>
+				{ this.props.icon && <Gridicon icon={ this.props.icon } style={ { backgroundColor: this.props.iconColor } } />}
 				{ this.props.iconLabel }
 			</span>
 		);

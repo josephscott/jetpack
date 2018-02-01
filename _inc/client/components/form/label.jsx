@@ -1,12 +1,12 @@
 /** External Dependencies **/
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+const PropTypes = require( 'prop-types' );
+let React = require( 'react' ),
 	classNames = require( 'classnames' );
 
 module.exports = class extends React.Component {
-    static displayName = 'Label';
+	static displayName = 'Label';
 
-    static propTypes = {
+	static propTypes = {
 		style: PropTypes.any,
 		label: PropTypes.any,
 		labelSuffix: PropTypes.any,
@@ -17,8 +17,8 @@ module.exports = class extends React.Component {
 		inline: PropTypes.any
 	};
 
-    render() {
-		var label = this.props.label,
+	render() {
+		let label = this.props.label,
 			className = classNames( {
 				'dops-form-label': true,
 				'dops-form-inline': this.props.inline,
@@ -37,7 +37,7 @@ module.exports = class extends React.Component {
 
 				{ ( ! this.props.inline || ! label ) && this.props.children }
 
-				{ this.props.description && <p className='dops-field-description'>{ this.props.description }</p> }
+				{ this.props.description && <p className="dops-field-description">{ this.props.description }</p> }
 			</div>
 		);
 	}

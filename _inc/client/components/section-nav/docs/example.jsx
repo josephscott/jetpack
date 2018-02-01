@@ -1,16 +1,16 @@
 /**
  * External dependencies
  */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	PureRenderMixin = require( 'react-pure-render/mixin' ),
 	forEach = require( 'lodash/forEach' );
 
-var createReactClass = require('create-react-class');
+const createReactClass = require( 'create-react-class' );
 
 /**
  * Internal dependencies
  */
-var SectionNav = require( 'components/section-nav' ),
+let SectionNav = require( 'components/section-nav' ),
 	NavTabs = require( 'components/section-nav/tabs' ),
 	NavSegmented = require( 'components/section-nav/segmented' ),
 	NavItem = require( 'components/section-nav/item' ),
@@ -19,7 +19,7 @@ var SectionNav = require( 'components/section-nav' ),
 /**
  * Main
  */
-var SectionNavigation = createReactClass({
+const SectionNavigation = createReactClass( {
 	displayName: 'SectionNav',
 
 	mixins: [ PureRenderMixin ],
@@ -83,7 +83,7 @@ var SectionNavigation = createReactClass({
 	},
 
 	render: function() {
-		var demoSections = {};
+		const demoSections = {};
 
 		forEach( this.props, function( prop, key ) {
 			demoSections[ key ] = [];
@@ -153,14 +153,14 @@ var SectionNavigation = createReactClass({
 	},
 
 	getSelectedText: function( section ) {
-		var selected = this.state[ section + 'SelectedIndex' ],
+		let selected = this.state[ section + 'SelectedIndex' ],
 			text = this.props[ section ][ selected ];
 
 		return 'object' === typeof text ? text.name : text;
 	},
 
 	getSelectedCount: function( section ) {
-		var selected = this.state[ section + 'SelectedIndex' ],
+		let selected = this.state[ section + 'SelectedIndex' ],
 			selectedItem = this.props[ section ][ selected ];
 
 		return 'object' === typeof selectedItem
@@ -179,7 +179,7 @@ var SectionNavigation = createReactClass({
 
 	handleNavItemClick: function( section, index ) {
 		return function() {
-			var stateUpdate = {};
+			const stateUpdate = {};
 
 			stateUpdate[ section + 'SelectedIndex' ] = index;
 			this.setState( stateUpdate );
@@ -187,6 +187,6 @@ var SectionNavigation = createReactClass({
 	},
 
 	demoSearch: function() {}
-});
+} );
 
 module.exports = SectionNavigation;

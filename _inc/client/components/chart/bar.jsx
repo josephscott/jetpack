@@ -4,19 +4,19 @@
  * External dependencies
  */
 const PropTypes = require( 'prop-types' );
-var React = require( 'react' ),
+let React = require( 'react' ),
 	classNames = require( 'classnames' );
 
 /**
  * Internal dependencies
  */
-var Tooltip = require( 'components/tooltip' ),
+let Tooltip = require( 'components/tooltip' ),
 	Gridicon = require( 'components/gridicon' );
 
 module.exports = class extends React.Component {
-    static displayName = 'ModuleChartBar';
+	static displayName = 'ModuleChartBar';
 
-    static propTypes = {
+	static propTypes = {
 		isTouch: PropTypes.bool,
 		tooltipPosition: PropTypes.string,
 		className: PropTypes.string,
@@ -26,10 +26,10 @@ module.exports = class extends React.Component {
 		count: PropTypes.number
 	};
 
-    state = { showPopover: false };
+	state = { showPopover: false };
 
-    buildSections = () => {
-		var value = this.props.data.value,
+	buildSections = () => {
+		let value = this.props.data.value,
 			max = this.props.max,
 			percentage = max ? Math.ceil( ( value / max ) * 10000 ) / 100 : 0,
 			remain = 100 - percentage,
@@ -72,21 +72,21 @@ module.exports = class extends React.Component {
 		return sections;
 	};
 
-    clickHandler = () => {
+	clickHandler = () => {
 		if ( 'function' === typeof( this.props.clickHandler ) ) {
 			this.props.clickHandler( this.props.data );
 		}
 	};
 
-    mouseEnter = () => {
+	mouseEnter = () => {
 		this.setState( { showPopover: true } );
 	};
 
-    mouseLeave = () => {
+	mouseLeave = () => {
 		this.setState( { showPopover: false } );
 	};
 
-    renderTooltip = () => {
+	renderTooltip = () => {
 		if (
 			! this.props.data.tooltipData ||
 			! this.props.data.tooltipData.length ||
@@ -98,7 +98,7 @@ module.exports = class extends React.Component {
 		const { tooltipData } = this.props.data;
 
 		const listItemElements = tooltipData.map( function( options, i ) {
-			var wrapperClasses = [ 'module-content-list-item' ],
+			let wrapperClasses = [ 'module-content-list-item' ],
 				gridiconSpan;
 
 			if ( options.icon ) {
@@ -109,9 +109,9 @@ module.exports = class extends React.Component {
 
 			return (
 				<li key={ i } className={ wrapperClasses.join( ' ' ) } >
-					<span className='dops-wrapper'>
-						<span className='value'>{ options.value }</span>
-						<span className='label'>{ gridiconSpan }{ options.label }</span>
+					<span className="dops-wrapper">
+						<span className="value">{ options.value }</span>
+						<span className="label">{ gridiconSpan }{ options.label }</span>
 					</span>
 				</li>
 			);
@@ -133,14 +133,14 @@ module.exports = class extends React.Component {
 		);
 	};
 
-    render() {
-		var barStyle,
+	render() {
+		let barStyle,
 			barClass,
 			count = this.props.count || 1;
 
 		barClass = { 'dops-chart__bar': true };
 
-		if ( this.props.className ){
+		if ( this.props.className ) {
 			barClass[ this.props.className ] = true;
 		}
 

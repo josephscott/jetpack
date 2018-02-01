@@ -1,19 +1,19 @@
 /**
  * External dependencies
  */
-var PropTypes = require( 'prop-types' );
-var React = require( 'react' );
+const PropTypes = require( 'prop-types' );
+const React = require( 'react' );
 
 /**
  * Internal dependencies
  */
-var Bar = require( './bar' ),
+let Bar = require( './bar' ),
 	XAxis = require( './x-axis' );
 
 module.exports = class extends React.Component {
-    static displayName = 'ModuleChartBarContainer';
+	static displayName = 'ModuleChartBarContainer';
 
-    static propTypes = {
+	static propTypes = {
 		isTouch: PropTypes.bool,
 		data: PropTypes.array,
 		yAxisMax: PropTypes.number,
@@ -21,15 +21,15 @@ module.exports = class extends React.Component {
 		barClick: PropTypes.func
 	};
 
-    buildBars = (max) => {
-		var bars,
+	buildBars = ( max ) => {
+		let bars,
 			numberBars = this.props.data.length,
 			tooltipPosition = 'bottom right',
 			width = this.props.chartWidth,
 			barWidth = ( width / numberBars );
 
-		bars = this.props.data.map( function ( item, index ) {
-			var barOffset = barWidth * ( index + 1 );
+		bars = this.props.data.map( function( item, index ) {
+			const barOffset = barWidth * ( index + 1 );
 
 			if (
 					( ( barOffset + 230 ) > width ) &&
@@ -52,7 +52,7 @@ module.exports = class extends React.Component {
 		return bars;
 	};
 
-    render() {
+	render() {
 		return (
 			<div>
 				<div className="dops-chart__bars">

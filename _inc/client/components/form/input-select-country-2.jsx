@@ -1,13 +1,13 @@
 /** External Dependencies **/
-var React = require( 'react' );
+const React = require( 'react' );
 
 /** Internal Dependencies **/
-var SelectInput = require( './input-select' );
+const SelectInput = require( './input-select' );
 
 module.exports = class extends React.Component {
-    static displayName = 'CountrySelectInput2';
+	static displayName = 'CountrySelectInput2';
 
-    render() {
+	render() {
 		return (
 			<SelectInput { ...this.props }>
 				<option value="AF">Afghanistan</option>

@@ -13,16 +13,16 @@ import NoticeAction from 'components/notice/notice-action';
 import notices from 'notices';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeNotice } from './state/notices/actions'
+import { removeNotice } from './state/notices/actions';
 
 const debug = debugModule( 'calypso:notices' );
 
 require( './style.scss' );
 
 class NoticesList extends React.Component {
-    static displayName = 'NoticesList';
+	static displayName = 'NoticesList';
 
-    static propTypes = {
+	static propTypes = {
 		id: PropTypes.string,
 		notices: PropTypes.oneOfType( [
 			PropTypes.object,
@@ -30,22 +30,22 @@ class NoticesList extends React.Component {
 		] )
 	};
 
-    static defaultProps = {
-        id: 'overlay-notices',
-        notices: Object.freeze( [] )
-    };
+	static defaultProps = {
+		id: 'overlay-notices',
+		notices: Object.freeze( [] )
+	};
 
-    componentWillMount() {
+	componentWillMount() {
 		debug( 'Mounting Global Notices React component.' );
 	}
 
-    removeNotice = (notice) => {
+	removeNotice = ( notice ) => {
 		if ( notice ) {
 			notices.removeNotice( notice );
 		}
 	};
 
-    render() {
+	render() {
 		const noticesRaw = this.props.notices[ this.props.id ] || [];
 		let noticesList = noticesRaw.map( function( notice, index ) {
 			return (
