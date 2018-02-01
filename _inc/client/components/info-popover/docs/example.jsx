@@ -5,12 +5,14 @@
 var React = require( 'react' ),
 	PureRenderMixin = require( 'react-pure-render/mixin' );
 
+var createReactClass = require('create-react-class');
+
 /**
 * Internal dependencies
 */
 var InfoPopover = require( 'components/info-popover' );
 
-var InfoPopoverExample = React.createClass( {
+var InfoPopoverExample = createReactClass({
 	displayName: 'InfoPopover',
 
 	mixins: [ PureRenderMixin ],
@@ -54,6 +56,6 @@ var InfoPopoverExample = React.createClass( {
 		this.setState( { popoverPosition: event.target.value } );
 	}
 
-} );
+});
 
 module.exports = InfoPopoverExample;

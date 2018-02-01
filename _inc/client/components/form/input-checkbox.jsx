@@ -4,13 +4,15 @@ var React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	Formsy = require( 'formsy-react' );
 
+var createReactClass = require('create-react-class');
+
 /** Internal Dependencies **/
 var Label = require( './label' ),
 	getUniqueId = require( './counter' ),
 	FormInputValidation = require( '../form-input-validation' ),
 	requiredFieldErrorFormatter = require( './required-error-label' );
 
-module.exports = React.createClass( {
+module.exports = createReactClass({
 	displayName: 'CheckboxInput',
 
 	mixins: [Formsy.Mixin],
@@ -74,4 +76,4 @@ module.exports = React.createClass( {
 			</div>
 		);
 	}
-} );
+});

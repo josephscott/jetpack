@@ -5,14 +5,14 @@ var PropTypes = require( 'prop-types' );
 var React = require( 'react' ),
 	map = require( 'lodash/map' );
 
-module.exports = React.createClass( {
-	displayName: 'ValidationErrorList',
+module.exports = class extends React.Component {
+    static displayName = 'ValidationErrorList';
 
-	propTypes: {
+    static propTypes = {
 		messages: PropTypes.array.isRequired
-	},
+	};
 
-	render: function() {
+    render() {
 		return (
 			<div>
 				<p>
@@ -32,4 +32,4 @@ module.exports = React.createClass( {
 			</div>
 		);
 	}
-} );
+};

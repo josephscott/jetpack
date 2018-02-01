@@ -4,10 +4,10 @@ var React = require( 'react' );
 /** Internal Dependencies **/
 var SelectInput = require( './input-select' );
 
-module.exports = React.createClass( {
-	displayName: 'CountrySelectInput',
+module.exports = class extends React.Component {
+    static displayName = 'CountrySelectInput';
 
-	render: function() {
+    render() {
 		return (
 			<SelectInput { ...this.props }>
 				<option value='AFG'>Afghanistan</option>
@@ -262,4 +262,4 @@ module.exports = React.createClass( {
 			</SelectInput>
 		);
 	}
-} );
+};

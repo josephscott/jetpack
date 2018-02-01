@@ -6,6 +6,8 @@
 var React = require( 'react' ),
 	PureRenderMixin = require( 'react-pure-render/mixin' );
 
+var createReactClass = require('create-react-class');
+
 /**
  * Internal dependencies
  */
@@ -14,7 +16,7 @@ var SelectDropdown = require( 'components/select-dropdown' ),
 	DropdownLabel = require( 'components/select-dropdown/label' ),
 	DropdownSeparator = require( 'components/select-dropdown/separator' );
 
-var SelectDropdownDemo = React.createClass( {
+var SelectDropdownDemo = createReactClass({
 	displayName: 'SelectDropdown',
 
 	mixins: [ PureRenderMixin ],
@@ -117,6 +119,6 @@ var SelectDropdownDemo = React.createClass( {
 	},
 
 	onDropdownSelect: function() {}
-} );
+});
 
 module.exports = SelectDropdownDemo;

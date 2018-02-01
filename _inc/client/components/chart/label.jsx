@@ -4,16 +4,16 @@
 var PropTypes = require( 'prop-types' );
 var React = require( 'react' );
 
-module.exports = React.createClass( {
-	displayName: 'ModuleChartLabel',
+module.exports = class extends React.Component {
+    static displayName = 'ModuleChartLabel';
 
-	propTypes: {
+    static propTypes = {
 		width: PropTypes.number.isRequired,
 		x: PropTypes.number.isRequired,
 		label: PropTypes.string.isRequired
-	},
+	};
 
-	render: function() {
+    render() {
 		var labelStyle,
 			dir = 'left';
 
@@ -25,4 +25,4 @@ module.exports = React.createClass( {
 
 		return <div className="dops-chart__x-axis-label" style={ labelStyle }>{ this.props.label }</div>;
 	}
-} );
+};

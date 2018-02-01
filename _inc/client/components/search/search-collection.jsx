@@ -4,14 +4,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Hider = React.createClass( {
-	displayName: 'Hider',
+class Hider extends React.Component {
+    static displayName = 'Hider';
 
-	propTypes: {
+    static propTypes = {
 		hide: PropTypes.bool,
-	},
+	};
 
-	render() {
+    render() {
 		return (
 			<div
 				className={ 'design-assets__group' }
@@ -21,32 +21,30 @@ const Hider = React.createClass( {
 			</div>
 		);
 	}
-} );
+}
 
-const FilterSummary = React.createClass( {
-	getDefaultProps: function() {
-		return {
-			noResultsText: 'No Results Found'
-		};
-	},
+class FilterSummary extends React.Component {
+    static defaultProps = {
+        noResultsText: 'No Results Found'
+    };
 
-	propTypes: {
+    static propTypes = {
 		noResultsText: PropTypes.string
-	},
+	};
 
-	render() {
+    render() {
 		if ( this.props.items.length === 0 ) {
 			return ( <p>{ this.props.noResultsText }</p> );
 		} else {
 			return null;
 		}
 	}
-} );
+}
 
-export default React.createClass( {
-	displayName: 'Collection',
+export default class extends React.Component {
+    static displayName = 'Collection';
 
-	shouldWeHide: function( example ) {
+    shouldWeHide = (example) => {
 		let filter, searchString;
 
 		filter = this.props.filter || '';
@@ -62,15 +60,15 @@ export default React.createClass( {
 		}
 
 		return ! ( ! filter || searchString.toLowerCase().indexOf( filter ) > -1 );
-	},
+	};
 
-	visibleExamples: function( examples ) {
+    visibleExamples = (examples) => {
 		return examples.filter( ( child ) => {
 			return !child.props.hide;
 		} );
-	},
+	};
 
-	render: function() {
+    render() {
 		let summary, examples;
 
 		examples = React.Children.map( this.props.children, ( example ) => {
@@ -98,4 +96,4 @@ export default React.createClass( {
 			</div>
 		);
 	}
-} );
+}

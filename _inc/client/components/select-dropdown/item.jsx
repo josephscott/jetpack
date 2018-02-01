@@ -12,22 +12,20 @@ var React = require( 'react' ),
  */
 var Count = require( 'components/count' );
 
-var SelectDropdownItem = React.createClass( {
-	propTypes: {
+class SelectDropdownItem extends React.Component {
+    static propTypes = {
 		children: PropTypes.string.isRequired,
 		path: PropTypes.string,
 		selected: PropTypes.bool,
 		onClick: PropTypes.func,
 		count: PropTypes.number
-	},
+	};
 
-	getDefaultProps: function() {
-		return {
-			selected: false
-		};
-	},
+    static defaultProps = {
+        selected: false
+    };
 
-	render: function() {
+    render() {
 		var optionClassName = classNames( this.props.className, {
 			'dops-select-dropdown__item': true,
 			'is-selected': this.props.selected,
@@ -56,6 +54,6 @@ var SelectDropdownItem = React.createClass( {
 			</li>
 		);
 	}
-} );
+}
 
 module.exports = SelectDropdownItem;

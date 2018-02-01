@@ -4,12 +4,14 @@
 var React = require( 'react' ),
 	PureRenderMixin = require( 'react-pure-render/mixin' );
 
+var createReactClass = require('create-react-class');
+
 /**
  * Internal dependencies
  */
 var Spinner = require( 'components/spinner' );
 
-module.exports = React.createClass( {
+module.exports = createReactClass({
 	displayName: 'Spinner',
 
 	mixins: [ PureRenderMixin ],
@@ -27,4 +29,4 @@ module.exports = React.createClass( {
 			</div>
 		);
 	}
-} );
+});
